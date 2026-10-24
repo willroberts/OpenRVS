@@ -1,5 +1,38 @@
 ## Version History
 
+#### Release 1.10
+
+- Improves backwards compatibility of `OpenRenderFix` between older clients and updated servers
+
+#### Release 1.9
+
+- Enables overrides of MaxClientRate for clients and servers
+- Softens join checks to prevent greyed-out servers with long map rotations
+- Fixes OpenRenderFix compatibility (1.8 clients could not connect to 1.6 servers)
+- Rearranges beacon field order to ensure critical fields come first, preventing greyed-out servers with missing version / player list data
+
+#### Release 1.8
+
+- Repairs the server favorites feature, along with sorting and filtering favorites (Fixes #35)
+- Fixes the server info panel, showing map rotation and server settings (Fixes #34)
+- Fixes filtering servers (Fixes #33)
+- Improves compatibility checks for OpenRVS versions
+- Fixes dedicated server indicator icons, sorting, and filtering (Fixes #30)
+- Fixes failure to join Internet servers after playing on LAN (Fixes #62)
+- Fixes missing HUD when hosting or joining a non-dedicated (listen) server (Fixes #4)
+- Improves debug logging and makes it opt-in (Fixes #42)
+- Refactors part of OpenFOV into OpenConfigManager (Fixes #41)
+- Adds multi-character separator support to OpenString.Split() (Fixes #37)
+- Updates the download URL to GitHub releases
+
+#### Release 1.7
+
+- Improves beacon parsing and config loading, which should fix automatic server registration when using nonstandard ports
+- Improves parsing of IPs, resulting in exact matching / correctness for IP bans
+- Fixes a bug which could result in an empty server list when initial parsing failed
+- Fixes several leaks and cases of duplicated or per-tick work, resulting in minor performance improvements for clients and servers
+- Adds new tooling (make build) for compiling on Linux systems
+
 #### Release 1.6
 
 - Replaces hardcoded IPs with DNS names for improved reliability

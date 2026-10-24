@@ -129,6 +129,15 @@ instead of compiling or stripping it. `make release` rejects any different binar
 copy installed. Changes to this shared package require a separate compatibility
 plan and cross-version join testing.
 
+This preserves the v1.6 package identity, not every previously shipped identity:
+v1.7 and v1.8 included incompatible rebuilds of `OpenRenderFix`. Affected players
+can keep their existing `OpenRVS.u` and replace only OpenRenderFix with the v1.9
+copy, removing other installed copies first. Servers must use the same canonical
+package too. The listen-server HUD condition does not limit package checks:
+`ServerPackages=OpenRenderFix` requires a matching package on dedicated servers
+as well. See [the compatibility investigation](reports/openrenderfix-compatibility.md)
+for evidence, limitations, and the proposed join-test matrix.
+
 To enable debug logging, set `DebugMode=True` under `[OpenRVS.OpenLogger]` in `openrvs.ini`, then restart the game or server. The default is `False`.
 
 ## OpenRVS Libraries
