@@ -1,45 +1,20 @@
 # OpenRVS
 A patch to fix Red Storm Entertainment's mistakes (intentional and otherwise). Allows multiplayer again, enables more serious modding, implements some QOL fixes.
 
-## Credits
-By the OpenRVS team:
-  - original author: Twi
-  - programming: Twi and Will
-  - game service fix: chriswak
-  - community hosting: Tony and SMC Clan
-
-Thanks to: Tony, Psycho, Legacy, juguLator01, SMC and ShadowSquad clans, and the
-AllR6 community.
-
-## Installing or Updating OpenRVS (Client Instructions)
+## Installation Instructions
 1. Download the latest release ZIP from the
 [Releases page](https://github.com/OpenRVS-devs/OpenRVS/releases).
 1. Stop your game if it's running.
 2. Extract the contents of the OpenRVS ZIP file to your game's `system`
-   directory. For Steam, this is `steamapps\common\Rainbow Six 3 Gold\system`.
-   When upgrading an older installation, remove old `OpenRenderFix.utx` copies
-   from the game's package directories. The release now installs the code package
-   as `system/OpenRenderFix.u`, which matches the game's `System/*.u` search path.
+   directory.
 3. Optionally adjust your FOV in `openrvs.ini` - see the `[OpenRVS.OpenFOV]`
    section.
 4. Launch the game! You'll see a list of servers to choose from, or you can join
    by IP address.
 
-## Client Network Rate
-OpenRVS requests 100,000 bytes/sec when joining through the multiplayer server
-browser or Join IP dialog, overriding the menu's legacy T1/T3 preset (20,000).
-The server still caps the negotiated rate with `[IpDrv.TcpNetDriver]`
-`MaxClientRate`. Its native NETSPEED receiver also caps requests against the
-server's `[Engine.Player] ConfiguredInternetSpeed` default. OpenRVS sets that
-server-side default to 100,000 at startup; keep `MaxClientRate=100000` in the
-server's active INI. Updating only the server's OpenRVS does not change clients'
-requested rates. Client updates must include `R6ClassDefines.ini` as well as
-`OpenRVS.u`: `ClassMenuCDKeyManager` must select
-`class'OpenRVS.OpenMenuCDKeyManager'`. The client log records
-`Joining server with client netspeed 100000` when this hook runs.
-The override runs before menu-based joins; direct console `open` commands bypass
-it, and changing connection speed in the options menu during a session can lower
-the current rate again. Use `netspeed 100000` for an immediate in-session change.
+## How It Works
+- Replaces the old Ubi.com server list with a community server list.
+- Overrides the client's network data rate to 100KB/s. Players no longer need to select T1/T3 in network settings.
 
 ## Installing or Updating OpenRVS (Server Instructions)
 1. Download the latest release ZIP from the
@@ -105,3 +80,15 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Version History
 See [CHANGELOG.md](CHANGELOG.md).
+
+## Credits
+By the OpenRVS team:
+  - original author: Twi
+  - programming: Twi and Will
+  - game service fix: chriswak
+  - community hosting: Tony and SMC Clan
+
+Thanks to: Tony, Psycho, Legacy, juguLator01, SMC and ShadowSquad clans, and the AllR6 community.
+
+## License
+GPL v3
